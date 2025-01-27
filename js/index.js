@@ -1,9 +1,11 @@
 'use strict'
 const MINE = '💣'
+const FLAG = '⛳'
 
 var gBoard
 var gCountMines
-var g
+var gClicked
+var gTimerInterval
 
 const gGame = {
     isOn: false,
@@ -20,9 +22,8 @@ function onInit() {
     gGame.isOn = true
     gCountMines = 0
 
-    
-    
-    gBoard = buildBoard(gLevel.SIZE)
+    timer()
+    gBoard = buildBoard()
     setRandomMines(gLevel.MINES, gBoard)
     setMinesNegsCounts(gBoard)
     renderBoard(gBoard, '.board-container')
@@ -38,7 +39,7 @@ function buildBoard() {
                 minesAroundCount: 0,
                 isShown: false,
                 isMine: false,
-                isMarked: true,
+                isMarked: false,
             }
         }
     }
@@ -83,7 +84,7 @@ function renderBoard(mat, selector) {
             var currCell = mat[i][j]
             const className = `cell cell-${i}-${j} ${currCell.isShown ? 'shown' : 'hidden'}`
 
-            strHTML += `<td class="${className}" class="covered" onclick="onCellClicked(this, ${i}, ${j})">`
+            strHTML += `<td class="${className}" class="covered" oncontextmenu="onCellMarked(this, ${i},${j})" onclick="onCellClicked(this, ${i}, ${j})">`
             if (currCell.isShown) {
                 strHTML += currCell.isMine ? MINE : currCell.minesAroundCount || ''
             }
@@ -102,12 +103,13 @@ function onCellClicked(elCell, i, j) {
 
     elCell.style.opacity = 1
     var elCell = gBoard[i][j]
-    console.log(elCell)
 
     if (!elCell.isMine) {
+        if (elCell === FLAG) return
         elCell.isShown = true
         renderBoard(gBoard, '.board-container')
-        return elCell.minesAroundCount
+        if (elCell.innerText === FLAG)
+            return elCell.minesAroundCount
     }
     if (elCell.isMine) {
         elCell.isShown = true
@@ -120,13 +122,18 @@ function onCellClicked(elCell, i, j) {
     // else if (elCell.isMine) console.log(MINE)
     // else if (!elCell.minesAroundCount) console.log('')
 }
+
 function onCellMarked(elCell, i, j) {
+    hideContentMenu()
+    elCell.innerText = FLAG
+    gBoard[i][j] = FLAG
+    gGame.markedCount++
 }
 
 function checkGameOver() {
     gGame.isOn = false
     console.log('Game Over!')
-
+    timerOff()
 }
 
 function expandShown(board, elCell, i, j) {

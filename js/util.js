@@ -69,3 +69,35 @@ function intermediate() {
 function hard() {
     console.log(createMat(5))
 }
+
+function firstClick() {
+    createMat()
+}
+
+function hideContentMenu() {
+    document.addEventListener('contextmenu', event => {
+        event.preventDefault();
+    });
+}
+
+function backGround() {
+    const img = document.querySelector('board-container')
+    img.style.backgroundImage = "url('img/minesweeper.jpg')"
+}
+
+function timer() {
+    var time = 0
+    const elTimer = document.querySelector('.timer-display')
+
+    if (gGame.isOn) {
+        gTimerInterval = setInterval(() => {
+            time++
+            elTimer.innerText = time
+        }, 1000);
+
+    }
+}
+
+function timerOff() {
+    clearInterval(gTimerInterval)
+}
