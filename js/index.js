@@ -16,7 +16,7 @@ const gGame = {
     secsPassed: 0
 }
 const gLevel = {
-    SIZE: 4,
+    SIZE: 3,
     MINES: 2,
 }
 
