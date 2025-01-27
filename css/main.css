@@ -1,0 +1,50 @@
+body {
+    background-color: lightcoral;
+    text-align: center;
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+    border-color: black;
+}
+
+table {
+    margin: 200px auto;
+    border: 10px solid lightgray;
+    padding: 10px;
+    text-align: center;
+    background-color: gray;
+}
+
+td {
+    border: solid;
+    background-color: orange;
+    height: 50px;
+    width: 50px;
+    border-radius: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.cell {
+    color: grey;
+    border: 1px solid lightgray;
+    width: 100px;
+    height: 100px;
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.covered {
+    border: solid;
+    background-color: lightgrey;
+}
+
+.cell.shown {
+    background-color: white;
+    border: 1px solid #888;
+}
+
+.cell.hidden {
+    background-color: #ccc;
+}
