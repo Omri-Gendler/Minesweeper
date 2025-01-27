@@ -1,6 +1,8 @@
 'use strict'
 const MINE = '💣'
 const FLAG = '⛳'
+const WON = '🤩'
+
 
 var gBoard
 var gCountMines
@@ -14,15 +16,17 @@ const gGame = {
     secsPassed: 0
 }
 const gLevel = {
-    SIZE: 5,
-    MINES: 10
+    SIZE: 4,
+    MINES: 2,
 }
 
 function onInit() {
     gGame.isOn = true
     gCountMines = 0
-
+    
+    timerOff()
     timer()
+    
     gBoard = buildBoard()
     setRandomMines(gLevel.MINES, gBoard)
     setMinesNegsCounts(gBoard)
