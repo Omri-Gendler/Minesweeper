@@ -7,7 +7,8 @@ body {
 }
 
 table {
-    margin-top: 100px auto;
+    margin: auto;
+    margin-top: 80px auto;
     border: 10px solid lightgray;
     padding: 10px;
     text-align: center;
