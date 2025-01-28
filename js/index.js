@@ -22,7 +22,6 @@ const gLevel = {
 
 function onInit() {
     gGame.isOn = true
-    document.querySelector('.modal').style.display = 'none'
     gCountMines = 0
     timerOff()
     timer()

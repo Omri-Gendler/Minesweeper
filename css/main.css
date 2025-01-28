@@ -51,18 +51,6 @@ td {
     background-color: #ccc;
 }
 
-.modal {
-    position: absolute;
-    right: calc(50% - 100px);
-    top: 90px;
-
-    display: none;
-    width: 200px;
-    height: auto;
-    padding: 10px 0px;
-    background-color: lightseagreen;
-}
-
 h1 {
     font-size: 50px;
 }
@@ -70,4 +58,12 @@ h1 {
 .timer-display {
     margin-top: 20px;
     color: red;
+}
+
+.restart-btn {
+    display: block;
+    margin-left: 50%;
+    margin-right: 50%;
+    margin: auto;
+    margin-top: 20px;
 }
