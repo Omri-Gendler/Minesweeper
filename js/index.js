@@ -22,6 +22,7 @@ const gLevel = {
 }
 
 function onInit() {
+    document.querySelector('.timer-display').innerHTML = '0'
     gCountMines = 0
     gCountLives = 3
     gGame.isOn = true
