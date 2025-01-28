@@ -141,3 +141,15 @@ function uncoverNegs(rowIdx, colIdx, board) {
         }
     }
 }
+
+function removeLives() {
+    if (LIFE.length > 0) {
+
+        LIFE.splice(0, 1)
+    }
+}
+
+function addLives() {
+
+    document.querySelector('.lives').innerText = LIFE.join('')
+}
