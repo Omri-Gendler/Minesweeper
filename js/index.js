@@ -28,8 +28,7 @@ function onInit() {
     timer()
 
     gBoard = buildBoard()
-    firstClick()
-    // setRandomMines(gLevel.MINES, gBoard)
+    setRandomMines(gLevel.MINES, gBoard)
     setMinesNegsCounts(gBoard)
     renderBoard(gBoard, '.board-container')
     console.table(gBoard)

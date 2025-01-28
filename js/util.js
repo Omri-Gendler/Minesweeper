@@ -76,8 +76,8 @@ function hard() {
     onInit()
 }
 
-function firstClick() {
-    setRandomMines(gLevel.MINES, gBoard)
+function firstClick(board) {
+    board.isMine = false
 }
 
 function hideContentMenu() {
@@ -128,6 +128,10 @@ function openAllCells() {
 }
 
 function uncoverNegs(rowIdx, colIdx, board) {
+    var clickedCell = board[rowIdx][colIdx]
+
+    if (clickedCell.minesAroundCount !== 0) return
+
     for (var i = rowIdx - 1; i <= rowIdx + 1; i++) {
         if (i < 0 || i >= board.length) continue
         for (var j = colIdx - 1; j <= colIdx + 1; j++) {

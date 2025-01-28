@@ -2,8 +2,7 @@ body {
     background-color: lightgrey;
     text-align: center;
     color: black;
-    font-family: Arial, Helvetica, sans-serif;
-    border-color: black;
+    font-family: "Times New Roman", Times, serif;    border-color: black;
 }
 
 table {
@@ -23,10 +22,11 @@ td {
     border-radius: 10px;
     font-size: 20px;
     cursor: pointer;
+    
 }
 
 .cell {
-    color: grey;
+    color: black;
     border: 1px solid lightgray;
     width: 100px;
     height: 100px;
@@ -34,11 +34,12 @@ td {
     cursor: pointer;
     transition: transform 0.6s;
     transform-style: preserve-3d;
+    padding: auto;
 }
 
 .covered {
     border: solid;
-    background-color: lightgrey;
+    background-color: red;
 }
 
 .cell.shown {
@@ -60,4 +61,13 @@ td {
     height: auto;
     padding: 10px 0px;
     background-color: lightseagreen;
+}
+
+h1 {
+    font-size: 50px;
+}
+
+.timer-display {
+    margin-top: 20px;
+    color: red;
 }
