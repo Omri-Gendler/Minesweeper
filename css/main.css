@@ -49,3 +49,15 @@ td {
 .cell.hidden {
     background-color: #ccc;
 }
+
+.modal {
+    position: absolute;
+    right: calc(50% - 100px);
+    top: 90px;
+
+    display: none;
+    width: 200px;
+    height: auto;
+    padding: 10px 0px;
+    background-color: lightseagreen;
+}

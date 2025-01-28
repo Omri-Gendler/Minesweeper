@@ -16,17 +16,17 @@ const gGame = {
     secsPassed: 0
 }
 const gLevel = {
-    SIZE: 3,
-    MINES: 2,
+    SIZE: 4,
+    MINES: 4,
 }
 
 function onInit() {
     gGame.isOn = true
+    document.querySelector('.modal').style.display = 'none'
     gCountMines = 0
-    
     timerOff()
     timer()
-    
+
     gBoard = buildBoard()
     setRandomMines(gLevel.MINES, gBoard)
     setMinesNegsCounts(gBoard)
@@ -107,7 +107,6 @@ function onCellClicked(elCell, i, j) {
 
     elCell.style.opacity = 1
     var elCell = gBoard[i][j]
-
     if (!elCell.isMine) {
         if (elCell === FLAG) return
         elCell.isShown = true
@@ -119,9 +118,7 @@ function onCellClicked(elCell, i, j) {
         elCell.isShown = true
         renderBoard(gBoard, '.board-container')
         checkGameOver()
-
     }
-
     // if (elCell.minesAroundCount) console.log(elCell.minesAroundCount)
     // else if (elCell.isMine) console.log(MINE)
     // else if (!elCell.minesAroundCount) console.log('')
@@ -136,10 +133,15 @@ function onCellMarked(elCell, i, j) {
 
 function checkGameOver() {
     gGame.isOn = false
-    console.log('Game Over!')
+
+    if (gGame.isShown)
+        console.log('Game Over!')
+    isWin()
+    openModal()
     timerOff()
 }
 
 function expandShown(board, elCell, i, j) {
     if (elCell === emptyCell()) { }
 }
+

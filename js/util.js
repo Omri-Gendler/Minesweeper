@@ -59,15 +59,21 @@ function getRandomIntInclusive(min, max) {
 }
 
 function beginner() {
-    createMat(3)
+    gLevel.SIZE = 4
+    gLevel.MINES = 4
+    onInit()
 }
 
 function intermediate() {
-    createMat(4)
+    gLevel.SIZE = 5
+    gLevel.MINES = 6
+    onInit()
 }
 
 function hard() {
-    console.log(createMat(5))
+    gLevel.SIZE = 6
+    gLevel.MINES = 8
+    onInit()
 }
 
 function firstClick() {
@@ -101,3 +107,13 @@ function timer() {
 function timerOff() {
     clearInterval(gTimerInterval)
 }
+
+function openModal() {
+    document.querySelector('.modal').style.display = 'block'
+}
+
+function isWin() {
+    if (gGame.isShown === true && gGame.isMine === false)
+        console.log('win')
+    return
+    }
