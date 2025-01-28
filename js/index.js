@@ -146,7 +146,6 @@ function checkGameOver() {
     if (gGame.isShown)
         console.log('Game Over!')
     isWin()
-    openModal()
     timerOff()
 }
 

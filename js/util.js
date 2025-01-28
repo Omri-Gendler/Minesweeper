@@ -108,9 +108,6 @@ function timerOff() {
     clearInterval(gTimerInterval)
 }
 
-function openModal() {
-    document.querySelector('.modal').style.display = 'block'
-}
 
 function isWin() {
     if (gGame.isShown === true && gGame.isMine === false)
