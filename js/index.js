@@ -5,7 +5,7 @@ const WON = '🤩'
 
 
 var gBoard
-var gCountMines
+var gCountMines 
 var gClicked
 var gTimerInterval
 
@@ -21,8 +21,8 @@ const gLevel = {
 }
 
 function onInit() {
-    gGame.isOn = true
     gCountMines = 0
+    gGame.isOn = true
     timerOff()
     timer()
 
@@ -69,11 +69,12 @@ function countMinesNegs(rowIdx, colIdx, board) {
             if (j < 0 || j >= board[0].length) continue
             var currCell = board[i][j]
             if (currCell.isMine) {
-                minesCount++
                 gCountMines++
             }
         }
     }
+    minesCount++
+    console.log(gCountMines)
     return minesCount
 }
 

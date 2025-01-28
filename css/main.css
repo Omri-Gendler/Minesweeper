@@ -1,14 +1,14 @@
 body {
-    background-color: lightgrey;
+    background-color: rgb(118, 35, 90);
     text-align: center;
-    color: black;
+    color: white;
     font-family: "Times New Roman", Times, serif;    border-color: black;
 }
 
 table {
     margin: auto;
     margin-top: 50px auto;
-    border: 10px solid lightgray;
+    border: 10px solid rgb(188, 154, 154);
     padding: 10px;
     text-align: center;
     background-color: gray;
@@ -53,11 +53,12 @@ td {
 
 h1 {
     font-size: 50px;
+    color: white;
 }
 
 .timer-display {
     margin-top: 20px;
-    color: red;
+    color: white;
 }
 
 .restart-btn {
@@ -66,4 +67,8 @@ h1 {
     margin-right: 50%;
     margin: auto;
     margin-top: 20px;
+    height: auto;
+    width: auto;
+    font-size: 50px;
+    border-radius: 20px;
 }
