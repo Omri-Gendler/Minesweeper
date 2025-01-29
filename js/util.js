@@ -165,3 +165,23 @@ function resetLives() {
     document.querySelector('.lives').style.display = 'block'
     document.querySelector('.lives').innerText = LIFE.join('')
 }
+
+function resetGame() {
+    gCountMines = 0
+    gGame.isOn = true
+    resetLives()
+    document.querySelector('.restart-btn').innerHTML = '🤪'
+
+}
+
+function markCell(i, j) {
+    var currCell = gBoard[i][j]
+
+    if (currCell.isMarked) {
+        currCell.isMarked = false
+        document.querySelector(`.cell-${i}-${j}`).innerHTML = ''
+    } else {
+        currCell.isMarked = true
+        document.querySelector(`.cell-${i}-${j}`).innerHTML = FLAGc
+    }
+}
