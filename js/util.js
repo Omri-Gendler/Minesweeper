@@ -143,13 +143,25 @@ function uncoverNegs(rowIdx, colIdx, board) {
 }
 
 function removeLives() {
-    if (LIFE.length > 0) {
-
-        LIFE.splice(0, 1)
+    if (gCountLives > 0) {
+        LIFE.pop()
+        gCountLives--
+        document.querySelector('.lives').innerText = LIFE.join('')
     }
 }
 
-function addLives() {
+function addLife() {
+    if (gCountLives < 3) {
+        LIFE.push('🧡')
+        gCountLives++
+        document.querySelector('.lives').innerText = LIFE.join('')
+    }
+}
 
+
+function resetLives() {
+    LIFE = ['🧡', '🧡', '🧡']
+    gCountLives = 3
+    document.querySelector('.lives').style.display = 'block'
     document.querySelector('.lives').innerText = LIFE.join('')
 }

@@ -2,7 +2,7 @@
 const MINE = '💣'
 const FLAG = '⛳'
 const WON = '🤩'
-const LIFE = ['🧡', '🧡', '🧡']
+var LIFE
 
 var gBoard
 var gCountMines
@@ -22,10 +22,12 @@ const gLevel = {
 }
 
 function onInit() {
-    document.querySelector('.timer-display').innerHTML = '0'
+
     gCountMines = 0
-    gCountLives = 3
     gGame.isOn = true
+
+    resetLives()
+
     timerOff()
     timer()
 
@@ -34,7 +36,6 @@ function onInit() {
     setMinesNegsCounts(gBoard)
     renderBoard(gBoard, '.board-container')
     console.table(gBoard)
-    addLives()
 }
 
 function buildBoard() {
@@ -108,27 +109,24 @@ function renderBoard(mat, selector) {
 function onCellClicked(elCell, i, j) {
 
     if (!gGame.isOn) return
-
     elCell.style.opacity = 1
     var currCell = gBoard[i][j]
     if (!currCell.isMine) {
         uncoverNegs(i, j, gBoard)
-        if (elCell === FLAG) {
-            elCell.innerHTML = FLAG
-        }
         currCell.isShown = true
         renderBoard(gBoard, '.board-container')
-        if (currCell.innerText === FLAG)
-            return currCell.minesAroundCount
+        // if (currCell.innerText === FLAG) {
+        //     return currCell.minesAroundCount
+        // }
     }
     if (currCell.isMine) {
-        gCountLives--
         gCountMines++
         currCell.isShown = true
         removeLives()
-        addLives()
-        // removeLives()
         renderBoard(gBoard, '.board-container')
+        if (gCountLives === 0) {
+            document.querySelector('.lives').style.display = 'none'
+        }
         if (gCountLives === 0) {
             openAllCells()
             checkGameOver()
@@ -149,6 +147,7 @@ function onCellMarked(elCell, i, j) {
 
 function checkGameOver() {
     gGame.isOn = false
+
     isWin()
     timerOff()
     document.querySelector('.lives').style.display = 'none'
