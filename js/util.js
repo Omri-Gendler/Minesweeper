@@ -108,18 +108,6 @@ function timerOff() {
     clearInterval(gTimerInterval)
 }
 
-
-function isWin() {
-
-
-
-    for (var i = 0; i < gBoard.length; i++) {
-        for (var j = 0; j < gBoard[0].length; j++) {
-            // if (!gBoard[i][j].isMine) console.log('hi')
-        }
-    }
-}
-
 function openAllCells() {
     for (var i = 0; i < gBoard.length; i++) {
         for (var j = 0; j < gBoard[0].length; j++) {
@@ -188,6 +176,11 @@ function markCell(i, j) {
         document.querySelector(`.cell-${i}-${j}`).innerHTML = ''
     } else {
         currCell.isMarked = true
-        document.querySelector(`.cell-${i}-${j}`).innerHTML = FLAGc
+        document.querySelector(`.cell-${i}-${j}`).innerHTML = FLAG
     }
+}
+
+function isWin() {
+    alert('Win')
+    onInit()
 }
