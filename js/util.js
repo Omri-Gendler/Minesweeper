@@ -110,9 +110,14 @@ function timerOff() {
 
 
 function isWin() {
-    if (gGame.isShown === true && gGame.isMine === false)
-        console.log('win')
-    return
+
+
+
+    for (var i = 0; i < gBoard.length; i++) {
+        for (var j = 0; j < gBoard[0].length; j++) {
+            // if (!gBoard[i][j].isMine) console.log('hi')
+        }
+    }
 }
 
 function openAllCells() {
@@ -167,6 +172,7 @@ function resetLives() {
 }
 
 function resetGame() {
+    gGame.flags = 0
     gCountMines = 0
     gGame.isOn = true
     resetLives()
