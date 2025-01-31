@@ -160,16 +160,15 @@ function onCellMarked(elCell, i, j) {
         gBoard[i][j].isMarked = true
         gGame.flags++
     }
-
     console.log(gGame.flags)
 }
 
 function checkGameOver() {
 
     if (!gMinesLeftOnBoard) {
-        isWin()
+        isOver()
     } else {
-        return
+        isWin()
     }
 
     //     var correctFlags = 0

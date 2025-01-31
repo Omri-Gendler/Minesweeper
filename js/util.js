@@ -186,7 +186,7 @@ function markCell(i, j) {
     }
 }
 
-function isWin() {
+function isOver() {
     if (!gMinesLeftOnBoard) {
         openAllCells()
         renderBoard(gBoard, '.board-container')
@@ -197,6 +197,22 @@ function isWin() {
         // alert('Win')
         // onInit()
     }
+}
+
+function isWin() {
+    for (var i = 0; i < gBoard.length; i++) {
+        for (var j = 0; j < gBoard[0].length; j++) {
+            var currCell = gBoard[i][j]
+            if (!currCell.isMine && !currCell.isShown) return false
+            // if (currCell.isMine && !currCell.isMarked) return false
+        }
+    }
+    openAllCells()
+    renderBoard(gBoard, '.board-container')
+    timerOff()
+    document.querySelector('.timer-display').innerText = '0'
+    document.querySelector('.lives').style.display = 'none'
+    document.querySelector('.restart-btn').innerHTML = ' 🥳  '
 }
 
 function mineTap() {
