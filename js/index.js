@@ -6,6 +6,7 @@ var LIFE
 
 var gBoard
 var gCountMines
+var gMinesLeftOnBoard
 var gClicked
 var gTimerInterval
 var gCountLives
@@ -19,17 +20,14 @@ const gGame = {
 }
 const gLevel = {
     SIZE: 4,
-    MINES: 4,
+    MINES: 2,
 }
 
 function onInit() {
-    document.querySelector('.timer-display').innerText = '0'
     resetGame()
-    timerOff()
-    timer()
 
     gBoard = buildBoard()
-    setRandomMines(gLevel.MINES, gBoard)
+    // setRandomMines(gLevel.MINES, gBoard)
     setMinesNegsCounts(gBoard)
     renderBoard(gBoard, '.board-container')
     console.table(gBoard)
@@ -48,8 +46,8 @@ function buildBoard() {
             }
         }
     }
-    // board[0][0].isMine = true
-    // board[1][1].isMine = true
+    board[0][0].isMine = true
+    board[1][1].isMine = true
     // board[1][2].isMine = true
     return board
 }
@@ -109,7 +107,7 @@ function renderBoard(mat, selector) {
 
 function onCellClicked(elCell, i, j, event) {
     if (!gGame.isOn) return
-
+    // mineTap()
     renderBoard(gBoard, '.board-container')
 
     var currCell = gBoard[i][j]
@@ -132,6 +130,8 @@ function onCellClicked(elCell, i, j, event) {
     if (currCell.isMine) {
         // checkGameOver()
         gCountMines++
+        gMinesLeftOnBoard--
+        mineTap()
         currCell.isShown = true
         removeLives()
         renderBoard(gBoard, '.board-container')

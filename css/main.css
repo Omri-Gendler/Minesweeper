@@ -58,6 +58,7 @@ h1 {
 }
 
 .timer-display {
+    /* display: right; */
     margin-top: 20px;
     color: white;
 }
@@ -81,3 +82,7 @@ h1 {
     margin-top: 10px;
     background-color: yellow;
 }
+
+/* .mine-tapping {
+    display: flex;
+} */

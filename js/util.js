@@ -60,7 +60,7 @@ function getRandomIntInclusive(min, max) {
 
 function beginner() {
     gLevel.SIZE = 4
-    gLevel.MINES = 4
+    gLevel.MINES = 2
     onInit()
 }
 
@@ -160,12 +160,18 @@ function resetLives() {
 }
 
 function resetGame() {
+    document.querySelector('.timer-display').innerText = '0'
+    document.querySelector('.mine-tapping').innerText = '0'
+    document.querySelector('.restart-btn').innerHTML = '🤪'
+    document.querySelector('.mine-tapping').innerHTML = 'Mines left : 2'
+
+    gMinesLeftOnBoard = gLevel.MINES
     gGame.flags = 0
     gCountMines = 0
     gGame.isOn = true
     resetLives()
-    document.querySelector('.restart-btn').innerHTML = '🤪'
-
+    timerOff()
+    timer()
 }
 
 function markCell(i, j) {
@@ -183,4 +189,22 @@ function markCell(i, j) {
 function isWin() {
     alert('Win')
     onInit()
+}
+
+function mineTap() {
+    var taps = 0
+    var elTaps = document.querySelector('.mine-tapping')
+
+    elTaps.innerText = `Mines left: ${gMinesLeftOnBoard}`
+    console.log(gMinesLeftOnBoard)
+
+
+    // for (var i = 0; i < gBoard.length; i++) {
+    //     for (var j = 0; j < gBoard[0].length; j++) {
+    //         var currCell = gBoard[i][j]
+    //         if (currCell.isMine) {
+    //             taps++
+    //         }
+    //     }
+    // }
 }
