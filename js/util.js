@@ -66,13 +66,13 @@ function beginner() {
 
 function intermediate() {
     gLevel.SIZE = 5
-    gLevel.MINES = 6
+    gLevel.MINES = 4
     onInit()
 }
 
 function hard() {
     gLevel.SIZE = 6
-    gLevel.MINES = 8
+    gLevel.MINES = 6
     onInit()
 }
 
@@ -163,11 +163,12 @@ function resetGame() {
     document.querySelector('.timer-display').innerText = '0'
     document.querySelector('.mine-tapping').innerText = '0'
     document.querySelector('.restart-btn').innerHTML = '🤪'
-    document.querySelector('.mine-tapping').innerHTML = 'Mines left : 2'
+    document.querySelector('.mine-tapping').innerHTML = `Mines left : ${gLevel.MINES}`
 
     gMinesLeftOnBoard = gLevel.MINES
+    gGame.shownCount = 0
     gGame.flags = 0
-    gCountMines = 0
+    // gCountMines = 0
     gGame.isOn = true
     resetLives()
     timerOff()
@@ -187,32 +188,39 @@ function markCell(i, j) {
 }
 
 function isOver() {
-    if (!gMinesLeftOnBoard) {
+    if (gCountLives <= 0) {
         openAllCells()
         renderBoard(gBoard, '.board-container')
         timerOff()
         document.querySelector('.timer-display').innerText = '0'
-        document.querySelector('.lives').style.display = 'none'
+        document.querySelector('.lives').style.display = 'block'
         document.querySelector('.restart-btn').innerHTML = ' 🤯 '
-        // alert('Win')
-        // onInit()
+        alert('game over')
     }
 }
 
 function isWin() {
+
+    var safeCell = 0
+    var totalSafeCells = 0
+
     for (var i = 0; i < gBoard.length; i++) {
         for (var j = 0; j < gBoard[0].length; j++) {
             var currCell = gBoard[i][j]
-            if (!currCell.isMine && !currCell.isShown) return false
-            // if (currCell.isMine && !currCell.isMarked) return false
+            if (!currCell.isMine) totalSafeCells++
+            if (currCell.isShown && !currCell.isMine) safeCell++
+
         }
     }
-    openAllCells()
-    renderBoard(gBoard, '.board-container')
-    timerOff()
-    document.querySelector('.timer-display').innerText = '0'
-    document.querySelector('.lives').style.display = 'none'
-    document.querySelector('.restart-btn').innerHTML = ' 🥳  '
+    if (safeCell === totalSafeCells) {
+        openAllCells()
+        renderBoard(gBoard, '.board-container')
+        timerOff()
+        document.querySelector('.timer-display').innerText = '0'
+        document.querySelector('.lives').style.display = 'block'
+        document.querySelector('.restart-btn').innerHTML = ' 🥳  '
+        alert('you win')
+    }
 }
 
 function mineTap() {

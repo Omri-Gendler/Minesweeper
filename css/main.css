@@ -1,5 +1,5 @@
 body {
-    background-color: rgb(118, 35, 90);
+    background-color: rgb(123, 100, 116);
     text-align: center;
     color: white;
     font-family: "Times New Roman", Times, serif;
@@ -10,50 +10,44 @@ table {
     margin: auto;
     margin-top: 50px auto;
     border: 10px solid rgb(188, 154, 154);
-    padding: 10px;
+
     text-align: center;
-    background-color: gray;
+    /* background-color: gray; */
 }
 
 td {
     border: solid;
-    background-color: orange;
     height: 5px;
     width: 5px;
     border-radius: 5px;
     font-size: 10px;
     cursor: pointer;
-
 }
 
 .cell {
     color: black;
-    border: 1px solid lightgray;
-    width: 50px;
-    height: 50px;
+    border: 1px solid #ddd;
+    width: 40px;
+    height: 40px;
     font-size: 1.5em;
     cursor: pointer;
-    transition: transform 0.6s;
+    transition: transform 0.6;
     transform-style: preserve-3d;
     padding: auto;
-}
 
-.covered {
-    border: solid;
-    background-color: red;
-}
-
-.cell.shown {
-    background-color: white;
-    border: 1px solid #888;
 }
 
 .cell.hidden {
-    background-color: #ccc;
+    background-color: #b59b9b;
+    box-shadow: inset 3px 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.cell.shown{
+    box-shadow: inset 3px 3px 6px rgba(255, 255, 255, 0.783);
 }
 
 h1 {
-    font-size: 50px;
+    font-size: 40px;
     color: white;
 }
 

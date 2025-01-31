@@ -48,7 +48,7 @@ function buildBoard() {
     }
     board[0][0].isMine = true
     board[1][1].isMine = true
-    // board[1][2].isMine = true
+    board[1][2].isMine = true
     return board
 }
 
@@ -107,43 +107,30 @@ function renderBoard(mat, selector) {
 
 function onCellClicked(elCell, i, j, event) {
     if (!gGame.isOn) return
-    renderBoard(gBoard, '.board-container')
 
     var currCell = gBoard[i][j]
 
-    if (currCell.isMarked) {
-        gGame.flags++
-        currCell.isShown = true
-    }
+    if (currCell.isMarked) return
     if (currCell.isShown) return
     elCell.style.opacity = 1
 
 
     if (!currCell.isMine) {
-        // checkGameOver()
+        gGame.shownCount++
+        console.log(' gGame.shownCount:', gGame.shownCount)
         uncoverNegs(i, j, gBoard)
         currCell.isShown = true
-        renderBoard(gBoard, '.board-container')
     }
 
     if (currCell.isMine) {
-        gCountMines++
+        removeLives()
+        console.log('gCountLives:', gCountLives)
         gMinesLeftOnBoard--
+        console.log('gMinesLeftOnBoard:', gMinesLeftOnBoard)
         mineTap()
         currCell.isShown = true
-        removeLives()
-        renderBoard(gBoard, '.board-container')
-
-        if (gCountLives === 0) {
-            openAllCells()
-            renderBoard(gBoard, '.board-container')
-            timerOff()
-            document.querySelector('.timer-display').innerText = '0'
-            document.querySelector('.lives').style.display = 'none'
-            document.querySelector('.restart-btn').innerHTML = ' 🤯 '
-
-        }
     }
+    renderBoard(gBoard, '.board-container')
     checkGameOver()
 }
 
@@ -165,12 +152,11 @@ function onCellMarked(elCell, i, j) {
 
 function checkGameOver() {
 
-    if (!gMinesLeftOnBoard) {
-        isOver()
+    if (isWin()) {
+        isWin
     } else {
-        isWin()
+        isOver()
     }
-
     //     var correctFlags = 0
     //     var shownCells = 0
     //     var totalCells = gBoard.length * gBoard[0].length
