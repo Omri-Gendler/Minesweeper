@@ -187,8 +187,16 @@ function markCell(i, j) {
 }
 
 function isWin() {
-    alert('Win')
-    onInit()
+    if (!gMinesLeftOnBoard) {
+        openAllCells()
+        renderBoard(gBoard, '.board-container')
+        timerOff()
+        document.querySelector('.timer-display').innerText = '0'
+        document.querySelector('.lives').style.display = 'none'
+        document.querySelector('.restart-btn').innerHTML = ' 🤯 '
+        // alert('Win')
+        // onInit()
+    }
 }
 
 function mineTap() {

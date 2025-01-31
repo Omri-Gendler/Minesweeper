@@ -107,7 +107,6 @@ function renderBoard(mat, selector) {
 
 function onCellClicked(elCell, i, j, event) {
     if (!gGame.isOn) return
-    // mineTap()
     renderBoard(gBoard, '.board-container')
 
     var currCell = gBoard[i][j]
@@ -128,7 +127,6 @@ function onCellClicked(elCell, i, j, event) {
     }
 
     if (currCell.isMine) {
-        // checkGameOver()
         gCountMines++
         gMinesLeftOnBoard--
         mineTap()
@@ -146,7 +144,7 @@ function onCellClicked(elCell, i, j, event) {
 
         }
     }
-    // checkGameOver()
+    checkGameOver()
 }
 
 function onCellMarked(elCell, i, j) {
@@ -166,29 +164,35 @@ function onCellMarked(elCell, i, j) {
     console.log(gGame.flags)
 }
 
-// function checkGameOver() {
+function checkGameOver() {
 
-//     var correctFlags = 0
-//     var shownCells = 0
-//     var totalCells = gBoard.length * gBoard[0].length
-//     var totalMines = gLevel.MINES
+    if (!gMinesLeftOnBoard) {
+        isWin()
+    } else {
+        return
+    }
 
-//     for (var i = 0; i < gBoard.length; i++) {
-//         for (var j = 0; j < gBoard[0].length; j++) {
-//             var currCell = gBoard[i][j]
+    //     var correctFlags = 0
+    //     var shownCells = 0
+    //     var totalCells = gBoard.length * gBoard[0].length
+    //     var totalMines = gLevel.MINES
 
-//             if (currCell.isShown) shownCells++
-//             if (currCell.isMine && currCell.isMarked) correctFlags++
-//         }
+    //     for (var i = 0; i < gBoard.length; i++) {
+    //         for (var j = 0; j < gBoard[0].length; j++) {
+    //             var currCell = gBoard[i][j]
 
-//     }
-//     if (correctFlags === totalMines && shownCells - correctFlags === totalCells - totalMines) {
-//         gGame.isOn = false
-//     }
-//     else if (shownCells === totalCells) {
-//         gGame.isOn = false
-//     }
-// }
+    //             if (currCell.isShown) shownCells++
+    //             if (currCell.isMine && currCell.isMarked) correctFlags++
+    //         }
+
+    //     }
+    //     if (correctFlags === totalMines && shownCells - correctFlags === totalCells - totalMines) {
+    //         gGame.isOn = false
+    //     }
+    //     else if (shownCells === totalCells) {
+    //         gGame.isOn = false
+    //     }
+}
 
 
 
