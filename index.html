@@ -10,6 +10,7 @@
 <body onload="onInit()">
 
     <h1>Minesweeper</h1>
+
     <div class="difficulty-btn-container">
         <button onclick="beginner()">Beginner</button>
         <button onclick="intermediate()">Intermediate</button>
@@ -17,13 +18,14 @@
     </div>
 
     <button class="lives"></button>
+
+    <div class="hints"></div>
+
     <button onclick="darkMode()">Dark Mode</button>
-    <!-- <button onclick="hint()" class="hints">🗝🗝🗝</button> -->
     <button class="restart-btn" onclick="onInit()">🤪</button>
     <div class="timer-display"></div>
     <div class="mine-tapping"></div>
     <div class="board-container"></div>
-
 
     <script src="js/index.js"></script>
     <script src="js/util.js"></script>

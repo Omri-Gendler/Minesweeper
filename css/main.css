@@ -85,7 +85,10 @@ h1 {
     border-radius: 5px;
 }
 
-/* 
-body.dark-mode {
-    background-color: red;
-} */
+.hints {
+    font-size: 40px;
+    margin: auto;
+    background-color: black;
+    margin-bottom: 5px;
+    border-radius: 5px;
+}

@@ -45,7 +45,7 @@ function setRandomMines(amount, board, firstI, firstJ) {
         var idxI = getRandomIntInclusive(0, board.length - 1)
         var idxj = getRandomIntInclusive(0, board.length - 1)
 
-        if (!board[idxI][idxj].isMine && !(idxI === firstI ** idxj === firstJ)) {
+        if (!board[idxI][idxj].isMine && !(idxI === firstI && idxj === firstJ)) {
             board[idxI][idxj].isMine = true
             placeMines++
         }
@@ -168,6 +168,7 @@ function resetGame() {
     // gCountMines = 0
     gGame.isOn = true
     resetLives()
+    // resetHints()
     timerOff()
     timer()
 }
@@ -265,3 +266,10 @@ function darkMode(i, j) {
         // gGame.darkMode = false
     }
 }
+
+// function resetHints() {
+//     HINT = ['🗝', '🗝', '🗝']
+//     gCountHints = 3
+//     document.querySelector('.hints').style.display = 'block'
+//     document.querySelector('.hints').innerText = HINT.join('')
+// }

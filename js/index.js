@@ -2,7 +2,6 @@
 const MINE = '💣'
 const FLAG = '⛳'
 const WON = '🤩'
-var LIFE
 
 var gBoard
 var gCountMines
@@ -10,7 +9,9 @@ var gMinesLeftOnBoard
 var gClicked
 var gTimerInterval
 var gCountLives
-var gHint
+var LIFE
+var gCountHints
+var HINT
 
 const gGame = {
     isOn: false,
