@@ -243,3 +243,23 @@ function mineTap() {
     // }
 }
 
+function hint() {
+    gHint = setInterval(uncoverNegs(), 1000)
+}
+
+function darkMode(i, j) {
+
+    gGame.darkMode = true
+
+    if (gGame.darkMode) {
+        var elBtnDarkMode_Body = document.querySelector('body')
+        var elCell = document.querySelector(`cell cell-${i}-${j}`)
+
+        elBtnDarkMode_Body.style.backgroundColor = 'black'
+        elCell.style.backgroundColor = 'red'
+        gGame.darkMode = false
+        console.log(gGame.darkMode)
+    }
+}
+
+// function

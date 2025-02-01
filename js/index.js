@@ -10,6 +10,7 @@ var gMinesLeftOnBoard
 var gClicked
 var gTimerInterval
 var gCountLives
+var gHint
 
 const gGame = {
     isOn: false,
@@ -18,17 +19,18 @@ const gGame = {
     secsPassed: 0,
     flags: 0,
     firstClick: 0,
+    darkMode: false,
 }
 const gLevel = {
     SIZE: 4,
-    MINES: 2,
+    MINES: 3,
 }
 
 function onInit() {
     resetGame()
 
     gBoard = buildBoard()
-    setRandomMines(gLevel.MINES, gBoard)
+    // setRandomMines(gLevel.MINES, gBoard)
     setMinesNegsCounts(gBoard)
     renderBoard(gBoard, '.board-container')
     console.table(gBoard)
@@ -47,9 +49,9 @@ function buildBoard() {
             }
         }
     }
-    // board[0][0].isMine = true
-    // board[1][1].isMine = true
-    // board[1][2].isMine = true
+    board[0][0].isMine = true
+    board[1][1].isMine = true
+    board[1][2].isMine = true
     return board
 }
 
@@ -114,8 +116,12 @@ function onCellClicked(elCell, i, j) {
 
     if (gGame.firstClick === 0) {
         currCell.isMine = false
+        setRandomMines(1, gBoard)
+        renderBoard(gBoard, '.board-container')
         gGame.firstClick++
+
     }
+    // hint(i, j, gBoard)
 
 
     if (currCell.isMarked && currCell.flags) return
