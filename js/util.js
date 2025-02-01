@@ -195,7 +195,7 @@ function isOver() {
         document.querySelector('.timer-display').innerText = '0'
         document.querySelector('.lives').style.display = 'block'
         document.querySelector('.restart-btn').innerHTML = ' 🤯 '
-        alert('game over')
+        // alert('game over')
     }
 }
 
@@ -203,6 +203,8 @@ function isWin() {
 
     var safeCell = 0
     var totalSafeCells = 0
+    var markedMineWithFlags = 0
+    var totalMines = 0
 
     for (var i = 0; i < gBoard.length; i++) {
         for (var j = 0; j < gBoard[0].length; j++) {
@@ -210,16 +212,18 @@ function isWin() {
             if (!currCell.isMine) totalSafeCells++
             if (currCell.isShown && !currCell.isMine) safeCell++
 
+            if (currCell.isMine) totalMines++
+            if (currCell.isMine && currCell.isMarked) markedMineWithFlags++
         }
     }
-    if (safeCell === totalSafeCells) {
+    if (safeCell === totalSafeCells && markedMineWithFlags === totalMines) {
         openAllCells()
         renderBoard(gBoard, '.board-container')
         timerOff()
         document.querySelector('.timer-display').innerText = '0'
         document.querySelector('.lives').style.display = 'block'
         document.querySelector('.restart-btn').innerHTML = ' 🥳  '
-        alert('you win')
+        // alert('you win')
     }
 }
 

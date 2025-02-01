@@ -88,12 +88,13 @@ function renderBoard(mat, selector) {
             var currCell = mat[i][j]
             const className = `cell cell-${i}-${j} ${currCell.isShown ? 'shown' : 'hidden'}`
 
-            strHTML += `<td class="${className}" class="covered" oncontextmenu="onCellMarked(this, ${i},${j})" onclick="onCellClicked(this, ${i}, ${j},event)">`
-            if (currCell.isShown) {
-                strHTML += currCell.isMine ? MINE : currCell.minesAroundCount || ''
-            }
+            strHTML += `<td class="${className}" oncontextmenu="onCellMarked(this, ${i},${j})" onclick="onCellClicked(this, ${i}, ${j})">`
+
             if (currCell.isMarked) {
-                strHTML += currCell = FLAG
+                // strHTML += currCell.isMine ? MINE : (currCell.minesAroundCount || '')
+                strHTML += FLAG
+            } else if (currCell.isShown) {
+                strHTML += currCell.isMine ? MINE : (currCell.minesAroundCount || '')
             }
             strHTML += `</td>`
         }
@@ -110,7 +111,7 @@ function onCellClicked(elCell, i, j, event) {
 
     var currCell = gBoard[i][j]
 
-    if (currCell.isMarked) return
+    if (currCell.isMarked && currCell.flags) return
     if (currCell.isShown) return
     elCell.style.opacity = 1
 
@@ -136,18 +137,21 @@ function onCellClicked(elCell, i, j, event) {
 
 function onCellMarked(elCell, i, j) {
     hideContentMenu()
+    var currCell = gBoard[i][j]
     elCell.innerText = FLAG
-    gBoard[i][j].flags = true
-    if (gBoard[i][j].isMarked) {
-        elCell.innerText = ''
-        gBoard[i][j].flags = false
+    currCell.flags = true
+
+    if (currCell.isShown) return
+
+    if (currCell.isMarked) {
+        currCell.isMarked = false
+        currCell.flags = false
         gGame.flags--
     } else {
-        elCell.innerText = FLAG
-        gBoard[i][j].isMarked = true
+        currCell.isMarked = true
         gGame.flags++
     }
-    console.log(gGame.flags)
+    renderBoard(gBoard, '.board-container')
 }
 
 function checkGameOver() {
