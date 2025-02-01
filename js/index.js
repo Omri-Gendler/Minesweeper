@@ -30,7 +30,7 @@ function onInit() {
     resetGame()
 
     gBoard = buildBoard()
-    // setRandomMines(gLevel.MINES, gBoard)
+    setRandomMines(gLevel.MINES, gBoard)
     setMinesNegsCounts(gBoard)
     renderBoard(gBoard, '.board-container')
     console.table(gBoard)
@@ -49,9 +49,9 @@ function buildBoard() {
             }
         }
     }
-    board[0][0].isMine = true
-    board[1][1].isMine = true
-    board[1][2].isMine = true
+    // board[0][0].isMine = true
+    // board[1][1].isMine = true
+    // board[1][2].isMine = true
     return board
 }
 
