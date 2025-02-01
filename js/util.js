@@ -76,9 +76,6 @@ function hard() {
     onInit()
 }
 
-function firstClick(board) {
-    board.isMine = false
-}
 
 function hideContentMenu() {
     document.addEventListener('contextmenu', event => {
@@ -168,6 +165,7 @@ function resetGame() {
     gMinesLeftOnBoard = gLevel.MINES
     gGame.shownCount = 0
     gGame.flags = 0
+    gGame.firstClick = 0
     // gCountMines = 0
     gGame.isOn = true
     resetLives()
@@ -244,3 +242,4 @@ function mineTap() {
     //     }
     // }
 }
+

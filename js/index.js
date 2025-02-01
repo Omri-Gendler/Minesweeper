@@ -17,6 +17,7 @@ const gGame = {
     markedCount: 0,
     secsPassed: 0,
     flags: 0,
+    firstClick: 0,
 }
 const gLevel = {
     SIZE: 4,
@@ -106,10 +107,16 @@ function renderBoard(mat, selector) {
     elContainer.innerHTML = strHTML
 }
 
-function onCellClicked(elCell, i, j, event) {
+function onCellClicked(elCell, i, j) {
     if (!gGame.isOn) return
 
     var currCell = gBoard[i][j]
+
+    if (gGame.firstClick === 0) {
+        currCell.isMine = false
+        gGame.firstClick++
+    }
+
 
     if (currCell.isMarked && currCell.flags) return
     if (currCell.isShown) return
@@ -132,6 +139,7 @@ function onCellClicked(elCell, i, j, event) {
         currCell.isShown = true
     }
     renderBoard(gBoard, '.board-container')
+    console.log(currCell)
     checkGameOver()
 }
 
@@ -150,7 +158,9 @@ function onCellMarked(elCell, i, j) {
     } else {
         currCell.isMarked = true
         gGame.flags++
+        elCell.innerText = FLAG
     }
+    // console.log(currCell)
     renderBoard(gBoard, '.board-container')
 }
 
