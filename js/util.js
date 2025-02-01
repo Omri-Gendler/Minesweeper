@@ -60,7 +60,7 @@ function getRandomIntInclusive(min, max) {
 
 function beginner() {
     gLevel.SIZE = 4
-    gLevel.MINES = 2
+    gLevel.MINES = 3
     onInit()
 }
 
