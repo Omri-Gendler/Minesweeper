@@ -30,8 +30,8 @@ function onInit() {
     resetGame()
 
     gBoard = buildBoard()
-    setRandomMines(gLevel.MINES, gBoard)
-    setMinesNegsCounts(gBoard)
+    // setRandomMines(gLevel.MINES, gBoard)
+    // setMinesNegsCounts(gBoard)
     renderBoard(gBoard, '.board-container')
     console.table(gBoard)
 }
@@ -116,9 +116,10 @@ function onCellClicked(elCell, i, j) {
 
     if (gGame.firstClick === 0) {
         // document.querySelector('.mine-tapping').innerHTML = `Mines left : ${gLevel.MINES++}`
-        gMinesLeftOnBoard++
-        currCell.isMine = false
-        setRandomMines(1, gBoard)
+        // gMinesLeftOnBoard
+        // currCell.isMine = false
+        setRandomMines(gLevel.MINES, gBoard)
+        setMinesNegsCounts(gBoard)
         renderBoard(gBoard, '.board-container')
         gGame.firstClick++
 

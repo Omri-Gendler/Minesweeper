@@ -42,7 +42,7 @@ td {
     box-shadow: inset 3px 3px 6px rgba(0, 0, 0, 0.2);
 }
 
-.cell.shown{
+.cell.shown {
     box-shadow: inset 3px 3px 6px rgba(255, 255, 255, 0.783);
 }
 
@@ -80,3 +80,6 @@ h1 {
 /* .mine-tapping {
     display: flex;
 } */
+.button {
+    border-radius: 20px;
+}
