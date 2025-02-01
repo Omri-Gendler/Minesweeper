@@ -10,11 +10,14 @@
 <body onload="onInit()">
 
     <h1>Minesweeper</h1>
-    <button onclick="beginner()">Beginner</button>
-    <button onclick="intermediate()">Intermediate</button>
-    <button onclick="hard()">Hard</button>
+    <div class="difficulty-btn-container">
+        <button onclick="beginner()">Beginner</button>
+        <button onclick="intermediate()">Intermediate</button>
+        <button onclick="hard()">Hard</button>
+    </div>
+
     <button class="lives"></button>
-    <button onclick="darkMode()" class="dark-mode">Dark Mode</button>
+    <button onclick="darkMode()">Dark Mode</button>
     <!-- <button onclick="hint()" class="hints">🗝🗝🗝</button> -->
     <button class="restart-btn" onclick="onInit()">🤪</button>
     <div class="timer-display"></div>

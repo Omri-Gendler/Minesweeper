@@ -37,7 +37,7 @@ function emptyCell() {
     return emptyCells
 }
 
-function setRandomMines(amount, board) {
+function setRandomMines(amount, board, firstI, firstJ) {
     var placeMines = 0
 
     while (placeMines < amount) {
@@ -45,7 +45,7 @@ function setRandomMines(amount, board) {
         var idxI = getRandomIntInclusive(0, board.length - 1)
         var idxj = getRandomIntInclusive(0, board.length - 1)
 
-        if (!board[idxI][idxj].isMine) {
+        if (!board[idxI][idxj].isMine && !(idxI === firstI ** idxj === firstJ)) {
             board[idxI][idxj].isMine = true
             placeMines++
         }
@@ -190,7 +190,7 @@ function isOver() {
         renderBoard(gBoard, '.board-container')
         timerOff()
         document.querySelector('.timer-display').innerText = '0'
-        document.querySelector('.lives').style.display = 'block'
+        document.querySelector('.lives').innerText = '😭'
         document.querySelector('.restart-btn').innerHTML = ' 🤯 '
         // alert('game over')
         document.querySelector('.mine-tapping').innerText = '0'
@@ -256,13 +256,12 @@ function darkMode(i, j) {
 
     if (gGame.darkMode) {
         var elBtnDarkMode_Body = document.querySelector('body')
-        var elCell = document.querySelector(`cell cell-${i}-${j}`)
+        var elCell = document.querySelectorAll('cel.shown')
 
         elBtnDarkMode_Body.style.backgroundColor = 'black'
-        elCell.style.backgroundColor = 'red'
-        gGame.darkMode = false
-        console.log(gGame.darkMode)
+        for (var i = 0; i < elCell.length; i++) {
+            elCell[i].style.backgroundColor = 'red'
+        }
+        // gGame.darkMode = false
     }
 }
-
-// function

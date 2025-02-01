@@ -70,16 +70,22 @@ h1 {
 }
 
 .lives {
+    font-size: medium;
     margin: auto;
     height: auto;
     width: auto;
     margin-top: 10px;
-    background-color: yellow;
+    background-color: black;
+    margin-bottom: 5px;
+    border-radius: 5px;
 }
 
-/* .mine-tapping {
-    display: flex;
-} */
-.button {
-    border-radius: 20px;
+.difficulty-btn-container button {
+    font-size: large;
+    border-radius: 5px;
 }
+
+/* 
+body.dark-mode {
+    background-color: red;
+} */

@@ -118,7 +118,7 @@ function onCellClicked(elCell, i, j) {
         // document.querySelector('.mine-tapping').innerHTML = `Mines left : ${gLevel.MINES++}`
         // gMinesLeftOnBoard
         // currCell.isMine = false
-        setRandomMines(gLevel.MINES, gBoard)
+        setRandomMines(gLevel.MINES, gBoard, i, j)
         setMinesNegsCounts(gBoard)
         renderBoard(gBoard, '.board-container')
         gGame.firstClick++
