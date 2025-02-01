@@ -115,6 +115,8 @@ function onCellClicked(elCell, i, j) {
     var currCell = gBoard[i][j]
 
     if (gGame.firstClick === 0) {
+        // document.querySelector('.mine-tapping').innerHTML = `Mines left : ${gLevel.MINES++}`
+        gMinesLeftOnBoard++
         currCell.isMine = false
         setRandomMines(1, gBoard)
         renderBoard(gBoard, '.board-container')
@@ -176,6 +178,7 @@ function checkGameOver() {
         isWin
     } else {
         isOver()
+
     }
     //     var correctFlags = 0
     //     var shownCells = 0
@@ -197,6 +200,7 @@ function checkGameOver() {
     //     else if (shownCells === totalCells) {
     //         gGame.isOn = false
     //     }
+
 }
 
 

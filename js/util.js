@@ -158,7 +158,6 @@ function resetLives() {
 
 function resetGame() {
     document.querySelector('.timer-display').innerText = '0'
-    document.querySelector('.mine-tapping').innerText = '0'
     document.querySelector('.restart-btn').innerHTML = '🤪'
     document.querySelector('.mine-tapping').innerHTML = `Mines left : ${gLevel.MINES}`
 
@@ -194,7 +193,9 @@ function isOver() {
         document.querySelector('.lives').style.display = 'block'
         document.querySelector('.restart-btn').innerHTML = ' 🤯 '
         // alert('game over')
+        document.querySelector('.mine-tapping').innerText = '0'
     }
+
 }
 
 function isWin() {
@@ -222,7 +223,9 @@ function isWin() {
         document.querySelector('.lives').style.display = 'block'
         document.querySelector('.restart-btn').innerHTML = ' 🥳  '
         // alert('you win')
+        document.querySelector('.mine-tapping').innerText = '0'
     }
+
 }
 
 function mineTap() {
