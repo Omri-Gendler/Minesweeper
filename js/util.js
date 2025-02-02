@@ -152,7 +152,7 @@ function addLife() {
 function resetLives() {
     LIFE = ['🧡', '🧡', '🧡']
     gCountLives = 3
-    document.querySelector('.lives').style.display = 'block'
+    // document.querySelector('.lives').style.display = 'block'
     document.querySelector('.lives').innerText = LIFE.join('')
 }
 
@@ -167,8 +167,10 @@ function resetGame() {
     gGame.firstClick = 0
     // gCountMines = 0
     gGame.isOn = true
+    gHintOn = false
+
     resetLives()
-    // resetHints()
+    // renderHints()
     timerOff()
     timer()
 }
@@ -201,27 +203,30 @@ function isOver() {
 
 function isWin() {
 
-    var safeCell = 0
+    var safeOpenCell = 0
     var totalSafeCells = 0
-    var markedMineWithFlags = 0
+    var markedMineWithFlag = 0
     var totalMines = 0
 
     for (var i = 0; i < gBoard.length; i++) {
         for (var j = 0; j < gBoard[0].length; j++) {
             var currCell = gBoard[i][j]
             if (!currCell.isMine) totalSafeCells++
-            if (currCell.isShown && !currCell.isMine) safeCell++
+            if (currCell.isShown && !currCell.isMine) safeOpenCell++
 
             if (currCell.isMine) totalMines++
-            if (currCell.isMine && currCell.isMarked) markedMineWithFlags++
+            if (currCell.isMine && currCell.isMarked) markedMineWithFlag++
         }
     }
-    if (safeCell === totalSafeCells && markedMineWithFlags === totalMines) {
+    if (
+        (safeOpenCell === totalSafeCells && markedMineWithFlag === totalMines) ||
+        (gCountLives > 0 && safeOpenCell === totalSafeCells)
+    ) {
         openAllCells()
         renderBoard(gBoard, '.board-container')
         timerOff()
         document.querySelector('.timer-display').innerText = '0'
-        document.querySelector('.lives').style.display = 'block'
+        document.querySelector('.lives').innerText = LIFE.join('')
         document.querySelector('.restart-btn').innerHTML = ' 🥳  '
         // alert('you win')
         document.querySelector('.mine-tapping').innerText = '0'
@@ -247,10 +252,6 @@ function mineTap() {
     // }
 }
 
-function hint() {
-    gHint = setInterval(uncoverNegs(), 1000)
-}
-
 function darkMode(i, j) {
 
     gGame.darkMode = true
@@ -267,9 +268,13 @@ function darkMode(i, j) {
     }
 }
 
-// function resetHints() {
-//     HINT = ['🗝', '🗝', '🗝']
-//     gCountHints = 3
-//     document.querySelector('.hints').style.display = 'block'
-//     document.querySelector('.hints').innerText = HINT.join('')
-// }
+function getHint(idx) {
+    gHintOn = true
+
+    var img = document.querySelector(`#hint-${idx}`)
+
+    if (gHintOn) {
+        img.src = "img/hint-on.png"
+
+    }
+}

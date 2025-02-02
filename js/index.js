@@ -6,18 +6,16 @@ const WON = '🤩'
 var gBoard
 var gCountMines
 var gMinesLeftOnBoard
-var gClicked
 var gTimerInterval
 var gCountLives
 var LIFE
-var gCountHints
-var HINT
+var gHintOn
+var gBulbIsOn
 
 const gGame = {
     isOn: false,
     shownCount: 0,
     markedCount: 0,
-    secsPassed: 0,
     flags: 0,
     firstClick: 0,
     darkMode: false,
@@ -29,12 +27,8 @@ const gLevel = {
 
 function onInit() {
     resetGame()
-
     gBoard = buildBoard()
-    // setRandomMines(gLevel.MINES, gBoard)
-    // setMinesNegsCounts(gBoard)
     renderBoard(gBoard, '.board-container')
-    console.table(gBoard)
 }
 
 function buildBoard() {
@@ -50,9 +44,6 @@ function buildBoard() {
             }
         }
     }
-    // board[0][0].isMine = true
-    // board[1][1].isMine = true
-    // board[1][2].isMine = true
     return board
 }
 
@@ -122,13 +113,9 @@ function onCellClicked(elCell, i, j) {
         gGame.firstClick++
 
     }
-    // hint(i, j, gBoard)
-
-
     if (currCell.isMarked && currCell.flags) return
     if (currCell.isShown) return
     elCell.style.opacity = 1
-
 
     if (!currCell.isMine) {
         gGame.shownCount++
@@ -167,7 +154,6 @@ function onCellMarked(elCell, i, j) {
         gGame.flags++
         elCell.innerText = FLAG
     }
-    // console.log(currCell)
     renderBoard(gBoard, '.board-container')
 }
 
@@ -179,34 +165,10 @@ function checkGameOver() {
         isOver()
 
     }
-    //     var correctFlags = 0
-    //     var shownCells = 0
-    //     var totalCells = gBoard.length * gBoard[0].length
-    //     var totalMines = gLevel.MINES
-
-    //     for (var i = 0; i < gBoard.length; i++) {
-    //         for (var j = 0; j < gBoard[0].length; j++) {
-    //             var currCell = gBoard[i][j]
-
-    //             if (currCell.isShown) shownCells++
-    //             if (currCell.isMine && currCell.isMarked) correctFlags++
-    //         }
-
-    //     }
-    //     if (correctFlags === totalMines && shownCells - correctFlags === totalCells - totalMines) {
-    //         gGame.isOn = false
-    //     }
-    //     else if (shownCells === totalCells) {
-    //         gGame.isOn = false
-    //     }
-
 }
-
-
 
 function expandShown(board, currCell) {
     if (currCell.minesAroundCount === 1) {
         countMinesNegs()
     }
 }
-
