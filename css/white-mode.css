@@ -1,0 +1,43 @@
+body {
+    background-color: rgb(123, 100, 116);
+    text-align: center;
+    color: white;
+    font-family: "Times New Roman", Times, serif;
+    border-color: black;
+}
+
+.cell {
+    color: black;
+    border: 1px solid #ddd;
+    width: 40px;
+    height: 40px;
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: transform 0.6;
+    transform-style: preserve-3d;
+    padding: auto;
+
+}
+.cell.hidden {
+    background-color: #856e6e;
+    box-shadow: inset 3px 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.cell.shown {
+    box-shadow: inset 3px 3px 6px rgba(190, 129, 129, 0.783);
+}
+
+
+.lives {
+    display: inline-block;
+    font-size: medium;
+    margin: auto;
+    height: auto;
+    width: auto;
+    margin-top: 10px;
+    background-color: black;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    padding: 10px;
+    border-radius: 10px;
+}

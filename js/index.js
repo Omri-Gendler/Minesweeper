@@ -10,7 +10,7 @@ var gTimerInterval
 var gCountLives
 var LIFE
 var gHintOn
-var gBulbIsOn
+var gDarkMode
 
 const gGame = {
     isOn: false,
@@ -18,7 +18,6 @@ const gGame = {
     markedCount: 0,
     flags: 0,
     firstClick: 0,
-    darkMode: false,
 }
 const gLevel = {
     SIZE: 4,
@@ -113,13 +112,14 @@ function onCellClicked(elCell, i, j) {
         gGame.firstClick++
 
     }
+
     if (currCell.isMarked && currCell.flags) return
     if (currCell.isShown) return
+
     elCell.style.opacity = 1
 
     if (!currCell.isMine) {
         gGame.shownCount++
-        console.log(' gGame.shownCount:', gGame.shownCount)
         uncoverNegs(i, j, gBoard)
         currCell.isShown = true
     }
@@ -132,6 +132,7 @@ function onCellClicked(elCell, i, j) {
         mineTap()
         currCell.isShown = true
     }
+
     renderBoard(gBoard, '.board-container')
     console.log(currCell)
     checkGameOver()

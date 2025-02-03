@@ -165,11 +165,12 @@ function resetGame() {
     gGame.shownCount = 0
     gGame.flags = 0
     gGame.firstClick = 0
-    // gCountMines = 0
     gGame.isOn = true
     gHintOn = false
+    gDarkMode = false
 
     resetLives()
+    store()
     // renderHints()
     timerOff()
     timer()
@@ -252,29 +253,54 @@ function mineTap() {
     // }
 }
 
-function darkMode(i, j) {
 
-    gGame.darkMode = true
-
-    if (gGame.darkMode) {
-        var elBtnDarkMode_Body = document.querySelector('body')
-        var elCell = document.querySelectorAll('cel.shown')
-
-        elBtnDarkMode_Body.style.backgroundColor = 'black'
-        for (var i = 0; i < elCell.length; i++) {
-            elCell[i].style.backgroundColor = 'red'
-        }
-        // gGame.darkMode = false
-    }
-}
-
-function getHint(idx) {
+function renderHint(idx) {
     gHintOn = true
 
-    var img = document.querySelector(`#hint-${idx}`)
-
+    var elImg = document.querySelector(`#hint-${idx}`)
     if (gHintOn) {
-        img.src = "img/hint-on.png"
+        elImg.src = "img/hint-on.png"
+    }
+    // } else {
+    //     elImg.src = "img/hint-off.png"
+    // }
 
+}
+
+function safeClick() {
+
+    var safeCell = [{}]
+
+    for (var i = 0; i < gBoard.length; i++) {
+        for (var j = 0; j < gBoard[0].length; j++) {
+            var currCell = gBoard[i][j]
+        }
+    }
+    var idxI = getRandomIntInclusive(0, gBoard.length - 1)
+    var idxJ = getRandomIntInclusive(0, gBoard.length - 1)
+
+    safeCell.push(idxI, idxJ)
+
+    // currCell = safeCell.
+}
+
+function store() {
+
+    localStorage.setItem("lastname", "Smith")
+    document.getElementById("result").innerText = localStorage.getItem("lastname")
+
+}
+
+function darkMode(el) {
+    var elDarkModeCss = document.querySelector('link')
+
+    if (!gDarkMode) {
+        elDarkModeCss.href = "css/dark-mode.css"
+        el.innerText = 'Light Mode'
+        gDarkMode = true
+    } else {
+        elDarkModeCss.href = "css/main.css"
+        el.innerText = 'Dark Mode'
+        gDarkMode = false
     }
 }

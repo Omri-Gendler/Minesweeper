@@ -1,5 +1,5 @@
 body {
-    background-color: rgb(123, 100, 116);
+    background-color: rgb(12, 11, 12);
     text-align: center;
     color: white;
     font-family: "Times New Roman", Times, serif;
@@ -18,7 +18,7 @@ td {
 
 
 .cell {
-    color: black;
+    color: rgb(255, 247, 247);
     border: 1px solid #ddd;
     width: 40px;
     height: 40px;
@@ -31,8 +31,8 @@ td {
 }
 
 .cell.hidden {
-    background-color: #856e6e;
-    box-shadow: inset 3px 3px 6px rgba(0, 0, 0, 0.2);
+    background-color: #a69a9a;
+    box-shadow: inset 3px 3px 6px rgba(187, 139, 139, 0.2);
 }
 
 .cell.shown {
@@ -41,13 +41,13 @@ td {
 
 h1 {
     font-size: 40px;
-    color: white;
+    color: rgba(190, 129, 129, 0.783);
 }
 
 .timer-display {
     /* display: right; */
     margin-top: 20px;
-    color: white;
+    color: rgba(190, 129, 129, 0.783);
 }
 
 .restart-btn {
@@ -60,6 +60,8 @@ h1 {
     width: auto;
     font-size: 50px;
     border-radius: 20px;
+    border: none;
+    color: rgba(190, 129, 129, 0.783);
 }
 
 .lives {
@@ -69,7 +71,7 @@ h1 {
     height: auto;
     width: auto;
     margin-top: 10px;
-    background-color: black;
+    background-color: rgba(190, 129, 129, 0.783);
     margin-bottom: 5px;
     border-radius: 5px;
     padding: 10px;
@@ -79,11 +81,13 @@ h1 {
 .difficulty-btn-container button {
     font-size: large;
     border-radius: 5px;
+    background-color: rgba(190, 129, 129, 0.783);
+    color: white;
 }
 
 img {
     width: 70px;
-    background-color: rgb(123, 100, 116);
+    background-color: rgb(56, 52, 55);
 
 }
 
@@ -94,7 +98,7 @@ img:hover {
 }
 
 button.img {
-    background-color: rgb(123, 100, 116);
+    background-color: rgb(0, 0, 0);
     border: none;
     margin-top: 15px;
     margin-bottom: 15px;
@@ -103,6 +107,7 @@ button.img {
 button.darkMode {
     display: block;
     margin: auto;
+    color:  black;
 }
 
 #result {
