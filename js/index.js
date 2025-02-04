@@ -10,6 +10,7 @@ var gTimerInterval
 var gCountLives
 var LIFE
 var gHintOn
+var gHints
 var gDarkMode
 
 const gGame = {

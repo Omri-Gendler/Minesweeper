@@ -76,7 +76,6 @@ function hard() {
     onInit()
 }
 
-
 function hideContentMenu() {
     document.addEventListener('contextmenu', event => {
         event.preventDefault();
@@ -168,10 +167,10 @@ function resetGame() {
     gGame.isOn = true
     gHintOn = false
     gDarkMode = false
+    gHints = 3
 
     resetLives()
-    store()
-    // renderHints()
+    // storeBestTime()
     timerOff()
     timer()
 }
@@ -253,18 +252,37 @@ function mineTap() {
     // }
 }
 
+function onHintTap(idxHint) {
+    if (gHints === 0) return
 
-function renderHint(idx) {
     gHintOn = true
+    var elHint = document.querySelector(`#hint-${idxHint}`)
+    elHint.src = "img/hint-on.png"
+}
 
-    var elImg = document.querySelector(`#hint-${idx}`)
-    if (gHintOn) {
-        elImg.src = "img/hint-on.png"
+function runHint(i, j) {
+    if (!gHintOn) return
+
+    gHintOn = false
+    gHints--
+    document.querySelector(`#hint-${gHints}`).style.display = 'none'
+
+    var openNegs = getNegs(i, j)
+    uncoverNegs(i, j, gBoard)
+}
+
+function getNegs(i, j) {
+    var negs = []
+    for (var idxI = -1; idxI <= 1; idxI++) {
+        for (var idxJ = -1; idxJ <= 1; idxJ++) {
+            var negI = i + idxI
+            var negJ = j + idxJ
+            if (negI >= 0 && negI < gBoard.length && negJ >= 0 && negJ < gBoard.length) {
+                negs.push({ i: negI, j: negJ })
+            }
+        }
     }
-    // } else {
-    //     elImg.src = "img/hint-off.png"
-    // }
-
+    return negs
 }
 
 function safeClick() {
@@ -284,7 +302,7 @@ function safeClick() {
     // currCell = safeCell.
 }
 
-function store() {
+function storeBestTime() {
 
     localStorage.setItem("lastname", "Smith")
     document.getElementById("result").innerText = localStorage.getItem("lastname")
