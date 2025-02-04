@@ -1,5 +1,5 @@
 body {
-    background-color: rgb(12, 11, 12);
+    background-color: rgb(33, 25, 33);
     text-align: center;
     color: white;
     font-family: "Times New Roman", Times, serif;
@@ -20,8 +20,8 @@ td {
 .cell {
     color: rgb(255, 247, 247);
     border: 1px solid #ddd;
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     font-size: 1.5em;
     cursor: pointer;
     transition: transform 0.6;
