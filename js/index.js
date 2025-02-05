@@ -73,14 +73,14 @@ function countMinesNegs(rowIdx, colIdx, board) {
     return minesCount
 }
 
-function renderBoard(mat, selector) {
+function renderBoard(board, selector) {
 
     var strHTML = '<table><tbody>'
-    for (var i = 0; i < mat.length; i++) {
+    for (var i = 0; i < board.length; i++) {
 
         strHTML += '<tr>'
-        for (var j = 0; j < mat[0].length; j++) {
-            var currCell = mat[i][j]
+        for (var j = 0; j < board[0].length; j++) {
+            var currCell = board[i][j]
             const className = `cell cell-${i}-${j} ${currCell.isShown ? 'shown' : 'hidden'}`
 
             strHTML += `<td class="${className}" oncontextmenu="onCellMarked(this, ${i},${j})" onclick="onCellClicked(this, ${i}, ${j})">`

@@ -16,7 +16,6 @@ td {
     border-radius: 5px;
 }
 
-
 .cell {
     color: rgb(255, 247, 247);
     border: 1px solid #ddd;
@@ -33,6 +32,12 @@ td {
 .cell.hidden {
     background-color: #a69a9a;
     box-shadow: inset 3px 3px 6px rgba(187, 139, 139, 0.2);
+    transition: transform 0.3s ease-in-out;
+}
+
+.cell.hidden:hover {
+    transition: 2.6ms;
+    transform: scale(1.1);
 }
 
 .cell.shown {
@@ -107,7 +112,7 @@ button.img {
 button.darkMode {
     display: block;
     margin: auto;
-    color:  black;
+    color: black;
 }
 
 #result {

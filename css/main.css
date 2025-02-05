@@ -30,9 +30,16 @@ td {
 
 }
 
+.cell.hidden:hover {
+    transition: 2.6ms;
+    transform: scale(1.1);
+}
+
 .cell.hidden {
     background-color: #856e6e;
     box-shadow: inset 3px 3px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+    
 }
 
 .cell.shown {
