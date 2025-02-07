@@ -22,7 +22,7 @@ const gGame = {
 }
 const gLevel = {
     SIZE: 4,
-    MINES: 3,
+    MINES: 1,
 }
 
 function onInit() {

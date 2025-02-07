@@ -60,7 +60,7 @@ function getRandomIntInclusive(min, max) {
 
 function beginner() {
     gLevel.SIZE = 4
-    gLevel.MINES = 3
+    gLevel.MINES = 1
     onInit()
 }
 
@@ -124,8 +124,10 @@ function uncoverNegs(rowIdx, colIdx, board) {
             if (i === rowIdx && j === colIdx) continue
             if (j < 0 || j >= board[0].length) continue
             var currCell = board[i][j]
+            if (currCell.isShown === true) continue
+            currCell.isShown = true
             if (currCell.minesAroundCount === 0 && currCell.isMine === false) {
-                currCell.isShown = true
+                uncoverNegs(i, j, board)
             }
         }
     }
