@@ -32,6 +32,7 @@ function onInit() {
     resetGame()
     gBoard = buildBoard()
     renderBoard(gBoard, '.board-container')
+    document.body.style.backgroundImage = "url('img/minesweeper.jpg')"
 }
 
 function buildBoard() {

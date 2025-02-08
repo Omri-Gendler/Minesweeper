@@ -1,81 +1,43 @@
-<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <link rel="stylesheet" href="css/app.css" />
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap"
-      rel="stylesheet"
-    />
-    <title>Mine Sweeper</title>
-  </head>
-  <body onload="onInit()"></body>
-  <button class="lightmode" onclick="onLightMode()">Light Mode ☀️</button>
-  <h1>Mine Sweeper</h1>
-  <div class="lives">
-    Lives:<span>🛟🛟🛟</span>| Hints:
-    <span class="hints hint1" onclick="onHintClick(this)">🔦</span>
-    <span class="hints hint2" onclick="onHintClick(this)">🔦</span>
-    <span class="hints hint3" onclick="onHintClick(this)">🔦</span>
-  </div>
-  <div class="numsgame">
-    <div>
-      ✅: <span class="showcount">0</span> &nbsp;| &nbsp;🚩: <span class="markedcount">0</span> | &nbsp;💣:
-      <span class="minescount">0</span> &nbsp;|&nbsp; ⏰:
-      <span class="timer">00:00</span>
-    </div>
-  </div>
-  <div class="buttons">
-    Game Level:
-    <button class="beginner" onclick="onDiffchose(this)">Beginner</button>
-    <button class="medium" onclick="onDiffchose(this)">Medium</button>
-    <button class="expert" onclick="onDiffchose(this)">Expert</button>
-  </div>
-  <div class="restart">
-    <button class="smiley" onclick="onRestart()">😀</button>
-  </div>
-  <div class="board-container"></div>
-  <div class="hintsbuttons">
-    <div class="hint-container">
-      <button class="megahint" onclick="onMegaHintBtn()">Mega Hint</button>
-      <span>1</span>Click available
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minesweeper</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body onload="onInit()">
+
+    <h1>Minesweeper</h1>
+
+    <div class="difficulty-btn-container">
+        <button onclick="beginner()">Beginner</button>
+        <button onclick="intermediate()">Intermediate</button>
+        <button onclick="hard()">Hard</button>
     </div>
 
-    <div class="mineexterminator-container">
-      <button class="mineexterminator" onclick="onMineExterminator()">
-        <img src="jpg/mine_exterdinator-removebg-preview.png" alt="" />
-      </button>
-      <span>1</span>Click available
-    </div>
-    <div class="safeclick-container">
-      <button class="safeclick" onclick="onSafeClick()">Safe Click 🏝️</button>
-      <span class="clicks">3</span> Clicks available
-    </div>
-    <div class="undo-container">
-      <button class="undo" onclick="onUndoClick()">Undo</button>
-      <span class="clicks">3</span> Click available
-    </div>
-  </div>
-  <div class="scores">
-    Best Scores:
-    <table>
-      <tr>
-        <th>Beginner</th>
-        <th>Medium</th>
-        <th>Expert</th>
-      </tr>
-      <tr>
-        <td class="beginner">-</td>
-        <td class="medium">-</td>
-        <td class="expert">-</td>
-      </tr>
-    </table>
-  </div>
-  <footer>Developed by Dor Azar</footer>
-  <script src="js/game.js"></script>
-  <script src="js/utils.js"></script>
-  <script src="js/stopwatch.js"></script>
+    <div class="lives"></div>
+
+    <button class="darkMode" onclick="darkMode(this)">Dark Mode</button>
+
+    <button class="restart-btn" onclick="onInit()">🤪</button>
+
+    <!-- <button class="safe-click" onclick="safeClick()">safe click</button> -->
+
+    <div class="timer-display"></div>
+    <div class="mine-tapping"></div>
+    <div class="board-container"></div>
+
+    <script src="js/index.js"></script>
+    <script src="js/util.js"></script>
+
+    <!-- <button class="img" onclick="onHintTap(1)"><img src="img/hint-off.png" id="hint-1"></button>
+    <button class="img" onclick="onHintTap(2)"><img src="img/hint-off.png" id="hint-2"></button>
+    <button class="img" onclick="onHintTap(3)"><img src="img/hint-off.png" id="hint-3"></button> -->
+    <!-- <button id="result"></button> -->
+    <button class="undo" onclick="undo(this)">Undo</button>
+</body>
+<footer style="margin-top: 15px;">© Created by Omri Gendler </footer>
+
 </html>
