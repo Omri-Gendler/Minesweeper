@@ -1,0 +1,301 @@
+body {
+  background-image: url('../jpg/minesweeper1.png');
+  text-align: center;
+  color: lightgray;
+  font-family: 'Comic Neue', sans-serif;
+  font-size: 20px; /* טקסט בסיסי גדול יותר */
+  font-weight: 700;
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh; /* 100% מגובה הדפדפן */
+}
+
+h1 {
+  font-weight: bold; /* הופך את הכותרת לעבה יותר */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* מוסיף צל לכותרת */
+}
+
+table {
+  background-color: grey;
+  margin: 20px auto;
+  border: 2px solid lightgray;
+  border-collapse: collapse; /* מונע הפרדה לא אחידה בין תאים */
+}
+
+.cell {
+  color: grey;
+  border: 1px solid rgb(90, 90, 90);
+  width: 50px;
+  height: 50px;
+  font-size: 1.5em;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  transition: 0.3s;
+  box-sizing: border-box;
+}
+
+.cell.clicked {
+  color: black;
+  border: 1px solid rgb(90, 90, 90);
+  background-color: rgb(202, 202, 202);
+  box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(255, 255, 255, 0.7);
+}
+
+.cell.clicked.mine {
+  border: 2px solid red;
+  background-color: rgb(255, 100, 100);
+  color: white;
+}
+
+.restart {
+  margin-top: 20px;
+}
+
+.restart .smiley {
+  all: unset;
+  font-size: 30px;
+  cursor: pointer;
+  padding: 5px;
+  transition: transform 0.2s;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.restart .smiley:active {
+  transform: scale(0.9);
+}
+
+footer {
+  font-size: 15px;
+  margin-top: 10px;
+}
+
+.beginner,
+.medium,
+.expert {
+  font-size: 18px;
+  margin: 10px;
+  padding: 8px 12px;
+  cursor: pointer;
+  background-color: white;
+  color: black;
+  border-radius: 5px;
+  border: 2px solid black;
+  transition: 0.3s;
+}
+
+.beginner:hover,
+.medium:hover,
+.expert:hover {
+  background-color: black;
+  color: white;
+}
+
+.lives {
+  font-size: 22px;
+  margin: 15px auto;
+}
+
+.buttons {
+  margin: 20px auto;
+}
+
+.lives span {
+  font-size: 24px;
+}
+
+.hints {
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.cell.clickedonhint {
+  color: black;
+  border: 2px solid yellow;
+  background-color: rgb(202, 202, 202);
+  box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(255, 255, 255, 0.7);
+}
+
+.cell.clickedonsafeclick {
+  color: black;
+  border: 2px solid rgb(16, 165, 252);
+  background-color: rgb(202, 202, 202);
+}
+
+.hintsbuttons {
+  margin-bottom: 15px;
+}
+
+.safeclicktext {
+  font-size: 8px;
+  margin-top: 5px;
+  margin-left: 170px;
+}
+
+.safeclick {
+  font-size: 18px;
+  margin: 10px;
+  padding: 8px 12px;
+  cursor: pointer;
+  background-color: white;
+  color: black;
+  border-radius: 5px;
+  border: 2px solid black;
+  transition: 0.3s;
+}
+
+.lightmode {
+  position: fixed; /* מיקום קבוע בדפדפן */
+  top: 20px; /* מרחק מהחלק העליון */
+  left: 20px; /* מרחק מהחלק השמאלי */
+  font-size: 14px;
+  padding: 8px 10px;
+  background-color: white;
+  color: black;
+  border: 2px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.lightmode:hover {
+  background-color: black;
+  color: white;
+}
+
+.lightmodebackground {
+  color: purple;
+  background-image: url('../jpg/minesweeper2.png');
+  /* background-color: grey; */
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+button {
+  font-family: 'Comic Neue', sans-serif;
+  font-weight: 700;
+  border: 2px solid white;
+  font-size: 18px;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: white;
+  color: black;
+}
+
+.scores {
+  width: 60%; /* התאמה טובה לכל מסך */
+  margin: 20px auto;
+  border-collapse: collapse;
+
+  table-layout: fixed; /* הופך את העמודות לשוות בגודלן */
+}
+
+/* עיצוב שורת הכותרת */
+.scores th {
+  background-color: black;
+  color: white;
+  padding: 12px;
+  font-size: 18px;
+}
+
+/* עיצוב התאים */
+.scores td {
+  background-color: grey;
+  color: white;
+  padding: 12px;
+  font-size: 16px;
+  border: 2px solid white;
+  text-align: center;
+}
+
+.safeclick.mineexterminator {
+  margin-left: -120px;
+  margin-top: -31px;
+}
+
+.mineexterminatorjpg:hover {
+  background-color: transparent;
+}
+
+img {
+  border: none;
+  outline: none;
+  margin-left: 10px;
+  width: 100px;
+  height: auto;
+  image-rendering: pixelated; /* שומר על שקיפות וניקיון */
+}
+
+.safeclickbtn {
+  border: 2px solid black;
+  border-radius: 5px;
+}
+
+.safeclickbtn:hover {
+  background-color: black;
+  color: white;
+}
+
+.hint-container,
+.safeclick-container,
+.mineexterminator-container,
+.undo-container {
+  display: inline-block; /* מאפשר לכל כפתור להחזיק את הטקסט שמתחתיו */
+  text-align: center; /* ממרכז את הטקסט מתחת לכפתור */
+  margin: 0 15px; /* רווח ביניהם */
+}
+
+.hint-container span,
+.safeclick-container span,
+.mineexterminator-container span,
+.undo-container span {
+  display: block; /* גורם לטקסט להופיע מתחת לכפתור */
+  margin-top: 5px; /* רווח קטן בין הכפתור לטקסט */
+}
+
+button.mineexterminator {
+  background-color: transparent;
+  border: none;
+}
+
+button.megahint {
+  font-size: 18px;
+  margin: 10px;
+  padding: 8px 12px;
+  cursor: pointer;
+  background-color: white;
+  color: black;
+  border-radius: 5px;
+  border: 2px solid black;
+  transition: 0.3s;
+}
+
+button.megahint:hover {
+  background-color: black;
+  color: white;
+}
+
+.safeclick:hover {
+  background-color: black;
+  color: white;
+}
+
+button.undo {
+  font-size: 18px;
+  margin: 10px;
+  padding: 8px 12px;
+  cursor: pointer;
+  background-color: white;
+  color: black;
+  border-radius: 5px;
+  border: 2px solid black;
+  transition: 0.3s;
+}
+
+button.undo:hover {
+  background-color: black;
+  color: white;
+}
