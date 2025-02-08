@@ -126,6 +126,7 @@ function uncoverNegs(rowIdx, colIdx, board) {
             var currCell = board[i][j]
             if (currCell.isShown === true) continue
             currCell.isShown = true
+            openedCells.push({ i, j })
             if (currCell.minesAroundCount === 0 && currCell.isMine === false) {
                 uncoverNegs(i, j, board)
             }
@@ -170,6 +171,7 @@ function resetGame() {
     gHintOn = false
     gDarkMode = false
     gHints = 3
+    prevMove = []
 
     resetLives()
     // storeBestTime()
@@ -323,4 +325,24 @@ function darkMode(el) {
         el.innerText = 'Dark Mode'
         gDarkMode = false
     }
+}
+
+function undo() {
+    if (prevMove.length === 0) return
+
+    var lastMove = prevMove.pop()
+
+    for (var i = 0; i < lastMove.length; i++) {
+        var move = lastMove[i]
+
+        gBoard[move.i][move.j].isShown = false
+        console.log('lastMove:', lastMove)
+        if (gBoard[move.i][move.j].isMine) {
+            gMinesLeftOnBoard++
+            document.querySelector('.mine-tapping').innerHTML = `Mines left : ${gLevel.MINES}`
+            addLife()
+        }
+    }
+
+    renderBoard(gBoard, '.board-container')
 }

@@ -12,6 +12,9 @@ var LIFE
 var gHintOn
 var gHints
 var gDarkMode
+var prevMove
+var lastMove
+var openedCells
 
 const gGame = {
     isOn: false,
@@ -105,6 +108,9 @@ function onCellClicked(elCell, i, j) {
     if (!gGame.isOn) return
 
     var currCell = gBoard[i][j]
+    openedCells = []
+
+    prevMove.push({ i, j })
 
     if (gGame.firstClick === 0) {
         setRandomMines(gLevel.MINES, gBoard, i, j)
@@ -123,19 +129,20 @@ function onCellClicked(elCell, i, j) {
         gGame.shownCount++
         uncoverNegs(i, j, gBoard)
         currCell.isShown = true
+        openedCells.push({ i, j })
     }
 
     if (currCell.isMine) {
         removeLives()
-        console.log('gCountLives:', gCountLives)
         gMinesLeftOnBoard--
         console.log('gMinesLeftOnBoard:', gMinesLeftOnBoard)
         mineTap()
         currCell.isShown = true
+        openedCells.push({ i, j })
     }
 
+    prevMove.push([...openedCells])
     renderBoard(gBoard, '.board-container')
-    console.log(currCell)
     checkGameOver()
 }
 
